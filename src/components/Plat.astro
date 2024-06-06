@@ -2,8 +2,6 @@
 
 let {dades} = Astro.props;
 
-let foto = (dades.foto && dades.foto[0].signedUrl) ?  dades.foto[0].signedUrl : null;
-
 ---
 
 <style>
@@ -15,7 +13,7 @@ let foto = (dades.foto && dades.foto[0].signedUrl) ?  dades.foto[0].signedUrl : 
 </style>
 <div>
     <h1>{dades.nom}</h1>
-    { foto && <img src={foto} alt={dades.nom} /> }
+    { dades.foto && <img src={dades.foto} alt={dades.nom} /> }
     
 </div>
 

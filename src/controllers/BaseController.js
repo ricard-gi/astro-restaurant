@@ -28,7 +28,9 @@ class BaseController {
             }
         });
 
-        return response.json();
+        //retornem directament la propietat list que conté els registres
+        const data = await response.json();
+        return data.list;
 
     }
 
