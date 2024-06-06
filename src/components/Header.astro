@@ -6,7 +6,10 @@ let currentUrl = Astro.request.url
 ---
 
 <style>
-    div {
+header {
+    margin: 20px 0 40px 0;
+}
+div {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -14,16 +17,14 @@ let currentUrl = Astro.request.url
     h1 {
         font-size: 2rem;
     }
-    ul {
-        padding: 20px;
-    }
+    
     ul li {
         display: inline-block;
         margin-right: 20px;
     }
 </style>
 <header>
-    <div class="flex">
+    <div class="container">
 
         <h1>{title}</h1>
         <ul>
@@ -39,5 +40,6 @@ let currentUrl = Astro.request.url
         </ul>
 
     </div>
-   
+    <hr>
 </header>
+
