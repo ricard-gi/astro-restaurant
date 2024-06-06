@@ -1,7 +1,7 @@
 
 
 
-const APIURL = 'https://app.nocodb.com/api/v2/tables/my4s0ohqgq68ecl/records';
+const APIURL = 'https://app.nocodb.com/api/v2';
 const TOKEN = 'NPu07sNv7LjzMBZCL4S-cytQfG3t9j6HDuxyOabj';
 
 
@@ -9,10 +9,14 @@ const TOKEN = 'NPu07sNv7LjzMBZCL4S-cytQfG3t9j6HDuxyOabj';
 class BaseController {
 
     
-
-    constructor(tableId) {
-        this.apiUrl = APIURL;
+    constructor(tableId, tableName) {
+        this.apiUrl = `${APIURL}/tables/${tableId}/records`;
         this.token = TOKEN;
+        this.tableName = tableName;
+    }
+
+    async getTableName(){
+        return this.tableName;
     }
 
     async getAll() {
@@ -25,35 +29,32 @@ class BaseController {
         });
 
         return response.json();
+
     }
 
-    async createItem(title) {
+    async createItem(ob) {
         const response = await fetch(`${this.apiUrl}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'xc-token': this.token
             },
-            body: JSON.stringify({
-                Title: title
-            })
+            body: JSON.stringify(ob)
         });
 
         const data = await response.json();
         return data;
     }
 
-    async updateItem(id, newstatus) {
+    async updateItem(id, ob) {
+        ob.Id = id;
         const response = await fetch(`${this.apiUrl}/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
                 'xc-token': this.token
             },
-            body: JSON.stringify({
-                Id: Id,
-                Status: newstatus
-            })
+            body: JSON.stringify(ob)
         });
 
         const data = await response.json();
@@ -92,4 +93,4 @@ class BaseController {
 }
 
 
-export default TodosController;
+export default BaseController;

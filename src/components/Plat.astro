@@ -1,0 +1,21 @@
+---
+
+let {dades} = Astro.props;
+
+let foto = (dades.foto && dades.foto[0].signedUrl) ?  dades.foto[0].signedUrl : null;
+
+---
+
+<style>
+    div {
+        background-color: beige;
+        padding: 20px;
+        border: 1px solir red;
+    }
+</style>
+<div>
+    <h1>{dades.nom}</h1>
+    { foto && <img src={foto} alt={dades.nom} /> }
+    
+</div>
+
