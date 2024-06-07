@@ -1,6 +1,3 @@
-
-
-
 const APIURL = 'https://app.nocodb.com/api/v2';
 const TOKEN = 'NPu07sNv7LjzMBZCL4S-cytQfG3t9j6HDuxyOabj';
 
